@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Example project for maven
+name: maven build project
 
 on:
   push:
