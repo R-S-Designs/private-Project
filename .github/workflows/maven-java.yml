@@ -6,14 +6,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Example project for maven
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+ 
   workflow_dispatch:
 
 jobs:
@@ -22,15 +20,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    - name: step1 - checkout main branch from GitHub
+      uses: actions/checkout@v3
+      
+    - name: Step 2 - Set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+        
+    - name: Step 3 - Build with Maven
+      run: |
+        echo building with maven
+        mvn -B package --file pom.xml
+        
+    - name: step 4 - list the pwd
+      run: ls -a
+      
+    - name: sterp 5 - content of the target folder
+      run: ls -a ./target
 
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
- 
+    
