@@ -26,8 +26,6 @@ jobs:
             mvn -B package --file pom.xml
   DeployDev:
     name: Deploy-to-Dev
-    if: github.event.name == 'push'
-    needs: [app]
     runs-on: ubuntu-lates
     environment: 
       name: Development
