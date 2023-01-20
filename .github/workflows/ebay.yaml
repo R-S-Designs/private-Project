@@ -5,7 +5,7 @@ on:
   
   workflow_dispatch:
 jobs:
-  app_one:
+  app:
     runs-on: ubuntu-latest
     environment:
       name: Development
@@ -26,8 +26,8 @@ jobs:
             mvn -B package --file pom.xml
   DeployDev:
     name: Deploy-to-Dev
-    if: github.event.name == 'pull_request'
-    needs: [app_one]
+    if: github.event.name == 'push'
+    needs: [app]
     runs-on: ubuntu-lates
     environment: 
       name: Development
