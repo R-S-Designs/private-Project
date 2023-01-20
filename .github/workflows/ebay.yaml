@@ -1,12 +1,14 @@
 name: ebay job
 on:
   push:
-    branch: [ "master" ]
+    branches: [ "master" ]
   
   workflow_dispatch:
 jobs:
   app_one:
     runs-on: ubuntu-latest
+    environment:
+      name: Development
     steps:
         - name: step 1 - Checkout branch master
           uses: actions/checkout@v1
@@ -22,3 +24,13 @@ jobs:
           run: |
             echo building with maven
             mvn -B package --file pom.xml
+  DeployDev:
+    name: Deploy-to-Dev
+    needs: [app_one]
+    runs-on: ubuntu-lates
+    environment: 
+      name: Development
+      url: http://dev.stage.com
+    steps:
+      - name: step 1 - Deploy
+        run: echo I am Delpoying!
