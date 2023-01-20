@@ -26,6 +26,7 @@ jobs:
             mvn -B package --file pom.xml
   DeployDev:
     name: Deploy-to-Dev
+    if: github.event.name == 'pull_request'
     needs: [app_one]
     runs-on: ubuntu-lates
     environment: 
