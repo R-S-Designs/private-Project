@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   app_one:
+    runs-on: ubuntu-latest
     steps:
         - name: step 1 - Checkout branch master
           uses: actions/checkout@v1
