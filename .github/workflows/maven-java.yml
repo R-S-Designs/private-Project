@@ -10,7 +10,7 @@ name: maven build project
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "stage" ]
  
   workflow_dispatch:
 
